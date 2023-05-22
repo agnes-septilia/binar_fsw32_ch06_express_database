@@ -1,0 +1,172 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    <% if (isUpdated === true) { %>
+        UPDATE USER
+    <% } else { %>
+        VIEW USER
+    <% } %>
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="screen d-flex flex-column justify-content-start m-3" id="login-page" >
+        <h1>USER DATA</h1>
+        <br>
+
+        <!-- create page for info where the data is not editable -->
+        <% if (isUpdated === false) { %>
+            <div>
+                <label>Username :</label>
+                <text><%= userdata.username %></text>
+            </div>
+
+            <div>
+                <label>Email :</label>
+                <text><%= userdata.email %></text>
+            </div>
+
+            <div>
+                <label>Gender :</label>
+                <text><%= userdata.gender %></text>
+            </div>
+
+            <div>
+                <label>Country :</label>
+                <text><%= userdata.country %></text>
+            </div>
+
+            <br>
+            
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">PLAY AT</th>
+                    <th scope="col">PLAYER WEAPON</th>
+                    <th scope="col">COMPUTER WEAPON</th>
+                    <th scope="col">RESULT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (var i=0; i < userdataGames.length; i++) { %>
+                  <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><%= userdataGames[i].createdAt %></td>
+                    <td><%= userdataGames[i].player_weapon %></td>
+                    <td><%= userdataGames[i].computer_weapon %></td>
+                    <td><%= userdataGames[i].result %></td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            
+            <div class="d-flex align-items-start justify-content-start" id="button-area">
+                <div class="p-2">
+                    <form action="/admin-info?id=<%= userdata.id %>" method="post">
+                        <button class = "btn btn-warning" type = "submit" ><i class="far fa-edit"> EDIT</i></button>
+                    </form>
+                </div>
+                <div class="p-2">
+                    <a href="/admin-dashboard">
+                        <button class = "btn btn-danger" type = "button" ><i class="fas fa-ban"> CANCEL</i></button>
+                    </a>
+                </div>
+            </div>  
+
+         <!-- create page for edit where the data is editable --> 
+        <% } else { %>
+            <text>Leave the field empty to delete the value </text>
+            <br>
+            <form action="/admin-save" method="post"> 
+            <span hidden>
+                <input class="input-field" type="text" name="id" id="id" value=<%= userdata.id %> >   
+            </span>
+            <div>
+                <label for="input-username">Username :</label>
+                <input class="input-field" type="text" name="username" id="input-username" value=<%= userdata.username %> >   
+            </div>
+
+            <div>
+                <label for="input-email">Email :</label>
+                <input class="input-field" type="text" name="email" id="input-email" value=<%= userdata.email %> > 
+            </div>
+            
+            <div>
+                <label for="input-gender">Gender :</label>
+                <br>
+                <select name="gender" id="input-gender" value=<%= userdata.gender %>>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="input-country">Country :</label>
+                <br>
+                <input class="input-field" type="text" name="country" id="input-country" value=<%= userdata.country %> >   
+            </div>
+
+            <br>
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">USERNAME</th>
+                    <th scope="col">GAME RESULT</th>
+                    <th scope="col">PLAY AT</th>
+                    <th scope="col">RESULT</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for (var i=0; i < userdataGames.length; i++) { %>
+                  <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td><%= userdataGames[i].createdAt %></td>
+                    <td><%= userdataGames[i].player_weapon %></td>
+                    <td><%= userdataGames[i].computer_weapon %></td>
+                    <td><%= userdataGames[i].result %></td>
+                    <td></td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            
+            <br>
+            <div class="d-flex align-items-start justify-content-start" id="button-area">
+                
+                <!-- Button to add  games data -->
+                <div class="pt-2 pr-2">
+                    <a>
+                        <button type="submit" class="btn btn-success" formaction="/admin-add-games?id=<%= userdata.id %>" ><i class="fas fa-plus" > ADD GAMES DATA</i></button>
+                    </a>
+                </div>
+                <div class="pt-2 pr-2">
+                    <form action="/admin-save?id=<%= userdata.id %>" method="post">
+                        <button class = "btn btn-warning" type = "submit" ><i class="far fa-save"> SAVE</i></button>
+                    </form>
+                </div>
+                <div class="pt-2 pr-2">
+                    <a href="/admin-dashboard">
+                        <button class = "btn btn-danger" type = "button" ><i class="fas fa-ban"> CANCEL</i></button>
+                    </a>
+                </div>
+            </div>  
+
+            </form>
+
+        <% } %>
+
+            
+    </div>
+</body>
+<!-- bootstrap js -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+</html>

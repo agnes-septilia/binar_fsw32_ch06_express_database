@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="/rps_stylesheet.css">
+</head>
+<body style="background-color: #9C835F;">
+    <div id="wrapper">
+
+        <!-- HEADER -->
+        <header id ="header">
+            <div id="back-button">
+                <a href="/"><img src="/brown-back-arrow.svg" class="img-fluid" width="40" alt="swipe-down"></a>
+            </div>
+            <div id="logo">
+                <img src="/rps_logo.png" class="img-fluid" width="70" alt="swipe-down">
+            </div>
+            <div id="title">
+                <h2 style="color: #F9B23D;">ROCK PAPER SCISSORS</h2>
+            </div>
+        </header>
+
+        <!-- MAIN SECTION -->
+        <section id="section" class="d-flex justify-content-center mt-4">
+            <div id="player-area" class="d-flex flex-column align-items-center justify-content-between">
+                <h2 style="color: black;">PLAYER 1</h2>
+                <button id="player-rock" class="player-weapons rock">
+                    <img src="/batu.png" class="img-fluid" width="90" alt="swipe-down">
+                </button>
+                <button id="player-paper" class="player-weapons paper">
+                    <img src="/kertas.png" class="img-fluid" width="90" alt="swipe-down">
+                </button>
+                <button id="player-scissors" class="player-weapons scissors">
+                    <img src="/gunting.png" class="img-fluid" width="90" alt="swipe-down">
+                </button>
+            </div>
+
+            <div id="result-area" class="d-flex flex-column align-items-center" >
+                <div id="versus" >
+                    <h1 class="display-1" style="color:#BD0000; font-weight: bold;">VS</h1>
+                </div>
+
+                <div id="player-win" style="background-color:#4C9654;">
+                    <h2>PLAYER 1 WIN</h2>
+                </div>
+
+                <div id="com-win" style="background-color:#4C9654;">
+                    <h2>COM WIN</h2>
+                </div>
+
+                <div id="draw" style="background-color: #035B0C;" >
+                    <h2>DRAW</h2>
+                </div>
+            </div>
+
+            <div id="computer-area" class="d-flex flex-column align-items-center  justify-content-between">
+                <h2 style="color: black;">COM</h2>
+                <div id="com-rock" class="com-weapons rock">
+                    <img src="/batu.png" class="img-fluid" width="90" alt="swipe-down">
+                </div>
+                <div id="com-paper" class="com-weapons paper">
+                    <img src="/kertas.png" class="img-fluid" width="90" alt="swipe-down">
+                </div>
+                <div id="com-scissors" class="com-weapons scissors">
+                    <img src="/gunting.png" class="img-fluid" width="90" alt="swipe-down">
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer id="footer">
+            <button id="refresh">
+                <img src="/refresh.png" class="img-fluid" width="70" alt="swipe-down">
+            </button>        
+        </footer>
+            
+    </div>
+
+</body>
+<!-- bootstrap js -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<script type="module" src="/rps_script.js"></script>
+</html>

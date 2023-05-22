@@ -1,0 +1,103 @@
+/*** CSS STYLESHEET FOR REGISTRATION PROCESS ***/
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: black;
+    font-weight: bold;
+}
+
+
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.screen{
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
+    position: relative;
+    display: flex;
+
+    background: black no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+#login-page, #signup-page, #welcome-page{
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
+}
+
+#page-title h2{
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+#input-area{
+    width: 100%;
+    font-size: 14px;
+}
+
+#avatar-area, #registration-area{
+    margin-left: 25px;
+    margin-right: 25px;
+}
+
+#input-username, #input-email, .input-password{
+    color: black;
+}
+
+.checkmark{
+    font-size: 10px;
+}
+
+#button-area{
+    margin: 20;
+}
+
+.btn-warning{
+    background-color: orange;
+    font-size: 16px;
+    font-weight: bold;
+    color:black;
+    min-width: 100px;
+}
+
+input[type=file]::file-selector-button {
+    background-color: orange;
+  }
+
+.input-field{
+    background-color: orange;
+}
+
+.input-field:focus {
+    background-color: orange;
+}
+
+
+#welcome-page{
+    display: flex;
+    justify-content: center;
+}
+
+#welcome-message{
+    margin-top: 50px;
+    text-align: center;
+}
+
+#play-button, #play-button form{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

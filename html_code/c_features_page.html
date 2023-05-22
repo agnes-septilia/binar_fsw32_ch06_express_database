@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FEATURES PAGE</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div class="screen d-flex flex-column" id="features-page" style="background-image: url(features.jpg);">
+        
+        <section id="feature-body">
+            <!-- ARTICLE -->
+            <header class="d-flex flex-column">
+                <h4 class="pb-4">What's so special?</h4>
+                <h2 class="display-3 pb-4">FEATURES</h2>
+            </header>
+
+            <br>
+
+            <!-- COLLAPSE ACCORDION -->
+            <div id="feature-collapse">
+                <div id="accordion" class="accordion d-flex flex-column">
+                    
+                    <!-- CARD 1 -->
+                    <div id="acc-card-1" class="accordion-card d-flex flex-column">
+                        <div id="acc-line">
+                            <div id="acc-bullet-1" class="acc-bullet"><img id="bullet-image-1"></div>
+                            <div id="vertical-line-1" class="vertical-line"></div>
+                        </div>
+                        <div id="acc-text">
+                            <div class="acc-title h3 colored-text">TRADITIONAL GAMES</div>
+                            <h4 id="acc-text-p1" class="acc-text-p">If you miss your childhood, we provide many traditional games here.</h4>
+                        </div>
+                    </div>
+
+                    <!-- CARD 2 -->
+                    <div id="acc-card-2" class="accordion-card d-flex flex-column">
+                        <div id="acc-line">
+                            <div id="acc-bullet-2" class="acc-bullet"><img id="bullet-image-2" src="ellipse-outline.svg"></div>
+                            <div id="vertical-line-2" class="vertical-line"></div>
+                        </div>
+                        <div id="acc-text">
+                            <div class="acc-title h3 colored-text">GAME SUIT</div>
+                            <h4 id="acc-text-p2" class="acc-text-p">Choose your player</h4>
+                        </div>
+                    </div>
+
+
+                    <!-- CARD 3 -->
+                    <div id="acc-card-3" class="accordion-card d-flex flex-column">
+                        <div id="acc-line">
+                            <div id="acc-bullet-3" class="acc-bullet"><img id="bullet-image-3" src="ellipse-outline.svg"></div>
+                            <div id="vertical-line-3" class="vertical-line"></div>
+                        </div>
+                        <div id="acc-text">
+                            <div class="acc-title h3 colored-text">TBD</div>
+                            <h4 id="acc-text-p3" class="acc-text-p">New Features Upcoming!</h4>
+                        </div>
+                    </div>
+                
+                </div>
+
+            </div>   
+        </section>
+    </div>
+</body>
+
+<!-- bootstrap js -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+<!-- accordion js -->
+<script>
+    // get element from html
+    const cardArray = document.querySelectorAll('.accordion-card');
+
+    // define function
+    function cardClosed(card, bullet, line, text) {
+        document.getElementById(card).style.height = "60px";
+        document.getElementById(bullet).style.content = "url('ellipse-outline.svg')";
+        document.getElementById(line).style.visibility = "hidden";
+        document.getElementById(text).style.visibility = "hidden";
+    }
+
+    function cardOpened(card, bullet, line, text) {
+        document.getElementById(card).style.height = "100px";
+        document.getElementById(bullet).style.content = "url('ellipse.svg')";
+        document.getElementById(line).style.visibility = "visible";
+        document.getElementById(text).style.visibility = "visible";
+    }
+
+    
+    // create counter of clicked card
+    let cardOneClicked = 0;
+    let cardTwoClicked = 1;
+    let cardThreeClicked = 1; 
+
+
+    // run function on click
+    cardArray.forEach(card => {
+        card.addEventListener("click", event => {
+            if (card === cardArray[0]) {
+                if (cardOneClicked % 2 === 0) {
+                    cardClosed("acc-card-1", "acc-bullet-1", "vertical-line-1", "acc-text-p1");
+                } else {
+                    cardOpened("acc-card-1", "acc-bullet-1", "vertical-line-1", "acc-text-p1");
+                }
+
+                cardOneClicked++;
+
+            } else if (card === cardArray[1]) {
+                if (cardTwoClicked % 2 === 0) {
+                    cardClosed("acc-card-2", "acc-bullet-2", "vertical-line-2", "acc-text-p2");
+                } else {
+                    cardOpened("acc-card-2", "acc-bullet-2", "vertical-line-2", "acc-text-p2");
+                }
+
+                cardTwoClicked++;
+
+            } else {
+                if (cardThreeClicked % 2 === 0) {
+                    cardClosed("acc-card-3", "acc-bullet-3", "vertical-line-3", "acc-text-p3");
+                } else {
+                    cardOpened("acc-card-3", "acc-bullet-3", "vertical-line-3", "acc-text-p3");
+                }
+
+                cardThreeClicked++;
+            }
+
+        });
+
+    });
+
+    </script>
+
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "binar_challenge_ch05",
+  "version": "1.0.0",
+  "description": "$ npm init",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "dotenv-load node index.js",
+    "start-local": "dotenv-load nodemon index.js"
+  },
+  "author": "Agnes",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "formidable": "^2.1.1",
+    "jquery": "^3.6.4",
+    "jsdom": "^21.1.1",
+    "pg": "^8.11.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.31.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "dotenv-load": "^2.0.1"
+  }
+}
